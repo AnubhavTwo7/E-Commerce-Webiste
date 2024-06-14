@@ -73,7 +73,9 @@ const LoginSignUp = () => {
           <input name='email' value={formData.email} onChange={changeHandler} type="email" placeholder='Your Email Address'/>
           <input name='password' value={formData.password} onChange={changeHandler} type="password" placeholder='Password'/>
         </div>
-        <button onClick={()=>{state==="Login"?login():signup()}} style={{backgroundColor: agree ? "red" : "gray", cursor: agree ? "pointer" : "not-allowed" }}disabled={!agree}>Continue</button>
+        <button onClick={() => { state === "Login" ? login() : signup() }} 
+          style={{ backgroundColor: agree && formData.email && formData.password ? "red" : "gray", cursor: agree && formData.email && formData.password ? "pointer" : "not-allowed" }}
+          disabled={!agree || !formData.email || !formData.password}>Continue</button>
         {state==="Sign Up"?<p className="loginsignup-login">Already have an account? <span onClick={()=>{setState("Login")}}>Login Here</span></p>
                           :<p className="loginsignup-login">Create an account <span onClick={()=>{setState("Sign Up")}}>Click Here</span></p>}
         <div className="loginsignup-agree">
